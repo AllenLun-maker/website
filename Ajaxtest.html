@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<title id="category">時事</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <style>
+        img{
+            width: 350px;
+            margin: 5px;
+        }
+        img:hover{
+            transform: scale(1.05);
+            transition: 1.2s;
+        }
+        /*.container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:space-around;
+            align-items: stretch;
+        }*/
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="Main.php">首頁</a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" id="Post" >投稿</a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" id="news">時事</a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" id="history">歷史</a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" id="env">環境議題</a>
+            </div>
+        </div>
+    </nav>
+	<div class="container">
+        <div id="Nws" style="display: none;"></div>
+        <div id="Hist" style="display: none;"></div>
+        <div id="Env" style="display: none;"></div>
+    <script> 
+       $(".container").ready(function(){
+            $.ajax({
+                url : "news.php",
+                dataType : "json",
+                type : "get",
+                async : false,
+                success : function(data) {
+                    //$(".container").innerHTML = ""; 
+                    console.log("success");
+                    for(var i = 0; i<data.length;i++){
+                        var ls = data[i];
+                        var names = ls[1];
+                        var path = ls[2];
+                        var info = ls[3];
+                        //console.log(typeof(info));
+                        if(ls[3] != ""){
+                            //console.log("case1");
+                            var div = document.createElement("div");
+                            div.setAttribute("class", "pic");
+                            var img = document.createElement("img");
+                            img.src = path;
+                            div.appendChild(img);
+                            var intro = document.createElement("div");
+                            intro.setAttribute("class", "word");
+                            intro.innerHTML = '<br>'+'<a>投稿人:'+names+'</a><br>'+'<a>Info:'+info+'</a><br><br>';
+                            //div.innerHTML = '<img src="'+path+'">'+'<br>'+'<a>投稿人:'+names+'</a><br>'+'<a>Info:'+info+'</a><br><br>';
+                            $("#Nws").append(div);
+                            $("#Nws").append(intro);
+                            //console.log("success");
+                        }else{
+                            console.log("case2");
+                            var div = document.createElement("div");
+                            div.setAttribute("class", "pic");
+                            var img = document.createElement("img");
+                            img.src = path;
+                            div.appendChild(img);
+                            var intro = document.createElement("div");
+                            intro.setAttribute("class", "word");
+                            intro.innerHTML = '<br>'+'<a>投稿人:'+names+'</a><br><br>';
+                            //div.innerhtml = '<img src="'+path+'">'+'<br>'+'<a>投稿人:'+names+'</a><br><br>';
+                            $("#Nws").append(div);
+                            $("#Nws").append(intro);
+                            //console.log("success");
+                        }
+                    }
+                }
+            })
+
+            $.ajax({
+                url : "history.php",
+                dataType : "json",
+                type : "get",
+                async : false,
+                success : function(data) {
+                    $(".container").innerHTML = "";
+                    console.log("success");
+                    for(var i = 0; i<data.length;i++){
+                        var ls = data[i];
+                        var names = ls[1];
+                        var path = ls[2];
+                        var info = ls[3];
+                        //console.log(typeof(info));
+                        if(ls[3] != ""){
+                            console.log("case1");
+                            var div = document.createElement("div");
+                            div.setAttribute("class", "pic");
+                            var img = document.createElement("img");
+                            img.src = path;
+                            div.appendChild(img);
+                            var intro = document.createElement("div");
+                            intro.setAttribute("class", "word");
+                            intro.innerHTML = '<br>'+'<a>投稿人:'+names+'</a><br>'+'<a>Info:'+info+'</a><br><br>';
+                            //div.innerHTML = '<img src="'+path+'">'+'<br>'+'<a>投稿人:'+names+'</a><br>'+'<a>Info:'+info+'</a><br><br>';
+                            $("#Hist").append(div);
+                            $("#Hist").append(intro);
+                            //console.log("success");
+                        }else{
+                            console.log("case2");
+                            var div = document.createElement("div");
+                            div.setAttribute("class", "pic");
+                            var img = document.createElement("img");
+                            img.src = path;
+                            div.appendChild(img);
+                            var intro = document.createElement("div");
+                            intro.setAttribute("class", "word");
+                            intro.innerHTML = '<br>'+'<a>投稿人:'+names+'</a><br><br>';
+                            //div.innerhtml = '<img src="'+path+'">'+'<br>'+'<a>投稿人:'+names+'</a><br><br>';
+                            $("#Hist").append(div);
+                            $("#Hist").append(intro);
+                            //console.log("success");
+                        }
+                    }
+                }
+            })
+        
+            $.ajax({
+                url : "environment.php",
+                dataType : "json",
+                type : "get",
+                async : false,
+                success : function(data) {
+                    $(".container").innerHTML = "";
+                    console.log("success");
+                    for(var i = 0; i<data.length;i++){
+                        var ls = data[i];
+                        var names = ls[1];
+                        var path = ls[2];
+                        var info = ls[3];
+                        //console.log(typeof(info));
+                        if(ls[3] != ""){
+                            console.log("case1");
+                            var div = document.createElement("div");
+                            div.setAttribute("class", "pic");
+                            var img = document.createElement("img");
+                            img.src = path;
+                            div.appendChild(img);
+                            var intro = document.createElement("div");
+                            intro.setAttribute("class", "word");
+                            intro.innerHTML = '<br>'+'<a>投稿人:'+names+'</a><br>'+'<a>Info:'+info+'</a><br><br>';
+                            //div.innerHTML = '<img src="'+path+'">'+'<br>'+'<a>投稿人:'+names+'</a><br>'+'<a>Info:'+info+'</a><br><br>';
+                            $("#Env").append(div);
+                            $("#Env").append(intro);
+                            //console.log("success");
+                        }else{
+                            console.log("case2");
+                            var div = document.createElement("div");
+                            div.setAttribute("class", "pic");
+                            var img = document.createElement("img");
+                            img.src = path;
+                            div.appendChild(img);
+                            var intro = document.createElement("div");
+                            intro.setAttribute("class", "word");
+                            intro.innerHTML = '<br>'+'<a>投稿人:'+names+'</a><br><br>';
+                            //div.innerhtml = '<img src="'+path+'">'+'<br>'+'<a>投稿人:'+names+'</a><br><br>';
+                            $("#Env").append(div);
+                            $("#Env").append(intro);
+                            //console.log("success");
+                        }
+                    }
+                }
+            })    
+        })
+
+        $("#news").click(function(){
+            $("#Hist").css("display","none");
+            $("#Env").css("display","none");
+            $("#Nws").css("display","initial");
+        })
+
+        $("#history").click(function(){
+            $("#Nws").css("display","none");
+            $("#Env").css("display","none");
+            $("#Hist").css("display","initial");
+        })
+
+        $("#env").click(function(){
+            $("#Hist").css("display","none");
+            $("#Nws").css("display","none");
+            $("#Env").css("display","initial");
+        })
+    </script>
+    </div>
+</body>
+</html>

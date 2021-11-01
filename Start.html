@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+            .warn:hover{
+                color: red;
+            }
+            button {
+                z-index: 1;
+                color: white;
+                background: #40a9ff;
+                outline: none;
+                border: none;
+                border-radius: 20px;
+                padding: 0.5em 1em;
+                }
+
+            button:hover {
+                cursor: pointer;
+                animation: jelly 0.5s;
+                background-color: purple;
+            }
+            @keyframes jelly {
+                0%,
+                100% {
+                    transform: scale(1, 1);
+                    /*background-color: purple;*/
+                }
+
+                25%,
+                75% {
+                    transform: scale(0.9, 1.1);
+                    /*background-color: purple;*/
+                }
+
+                50% {
+                    transform: scale(1.1, 0.9);
+                    /*background-color: purple;*/
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div style="text-align: center;">
+        <h1 class="warn">瘟腥提醒：</h1>
+        <br>
+        <p class="warn" style="font-family: 'Noto Sans TC', sans-serif;">站內圖片及文字極有可能導致道德及心理上不適，請審慎思考後再入內</p>
+        
+        <p class="warn" style="font-family: 'Indie Flower', cursive;"><span>Pictures and text are very likely to cause moral and psychological discomfort, <br>please think carefully before entering</span></p>
+        <br><br>
+        <button onclick="main()">我上車</button>
+        <br><br>
+        <button onclick="jump()">司機我要跳車</button>
+        </div>
+        <script>
+            function main(){
+                window.location.href="Main.php";
+            }
+            function jump() {
+                //window.open('','_self','');
+                window.close(); //Scripts may close only the windows that were opened by them.
+            }
+        </script>
+    </body>
+</html>

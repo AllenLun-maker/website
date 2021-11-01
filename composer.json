@@ -1,0 +1,16 @@
+{
+    "name": "user_a/project_www",
+    "description": "my first web design project",
+    "autoload": {
+        "psr-4": {
+            "UserA\\ProjectWww\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Arlun",
+            "email": "410777028@mail.nknu.edu.tw"
+        }
+    ],
+    "require": {}
+}
